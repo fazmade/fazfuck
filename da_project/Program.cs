@@ -269,7 +269,7 @@ namespace fazfuck
                     if (keykey == ConsoleKey.Escape)
                         dorun = false;
                     else
-                        run_hook("#console_keypressed", (int)keykey);
+                        run_hook("#console_keypressed", keykey.ToString());
                 }
             }
             Console.WriteLine("program finished");
@@ -311,10 +311,10 @@ namespace fazfuck
                             doerror("pointer " + line[0] + " was already defined as line " + pointers[line[0]] + "!");
                         else
                         {
-                            skipindentation(1); //searches for first {
-                            pointers.Add(line[0], counter + 1); //sets to first line after {
+                            pointers.Add(line[0], counter);
                             if (verbose == verbosity.runline)
-                                debugline("defined pointer " + line[0] + " as line " + (counter+1));
+                                debugline("defined pointer " + line[0] + " as line " + counter);
+                            skipindentation(1); //searches for first {
                             skipindentation(0); //skips the inside cuz brackets
                         }
                     }
@@ -991,17 +991,23 @@ namespace fazfuck
         }
         static void run_hook(string hookname, params object[] stuff)
         {
+            if (verbose == verbosity.runline)
+                debugline("run hook " + hookname);
             if (pointers.ContainsKey(hookname))
             {
                 counter = pointers[hookname];
                 string[] line = seperateline(lines[counter].TrimStart());
+                if (verbose == verbosity.runline)
+                    debugline(counter + ": " + string.Join("|", line));
                 isinhook = true;
                 switch (line[0]) //add your hooks here
                 {
                     case "#console_keypressed":
-                        setvar_num(line[1], (int)stuff[0]);
+                        setvar_string(line[1], (string)stuff[0]);
                         break;
                 }
+                skipindentation(1); //search for start of hook function
+                counter++;
                 run();
             }
         }

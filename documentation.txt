@@ -137,8 +137,8 @@ string: PROGRAMNAME console_windowtitle
 thing: INVALID funnyimg_garfield
 
 hooks:
-#console_keypressed(num var)
->activated when you press a console key (enum ConsoleKey for key numbers)
+#console_keypressed(string var)
+>activated when you press a key
 
 commands
 verbosity for debugging: v_not, v_seperateline, v_runline, v_variables, v_thing

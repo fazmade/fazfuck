@@ -1,41 +1,7 @@
 #console_keypressed(inputkey)
 {
-	set_stringvar(initialline,"key num: ")
-	num_to_string(printer,inputkey)
-	string_join(initialline,printer)
-	print(initialline)
-	{
-		compare_num(,inputkey,=,37)
-		if()
-		{
-			print("left arrow")
-			break(2)
-		}
-		compare_num(,inputkey,=,38)
-		if()
-		{
-			print("up arrow")
-			break(2)
-		}
-		compare_num(,inputkey,=,39)
-		if()
-		{
-			print("right arrow")
-			break(2)
-		}
-		compare_num(,inputkey,=,40)
-		if()
-		{
-			print("down arrow")
-			break(2)
-		}
-		compare_num(,inputkey,=,32)
-		if()
-		{
-			print("GEDAGEDI!!")
-			break(2)
-		}
-	}
+	print(inputkey)
+	debug_dumpdata()
 	end()
 }
 print("end initial run")
