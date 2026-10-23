@@ -128,6 +128,7 @@ debug_dumpdata()
 funnyimg_get(thing var, num)
 funnyimg_getstring(string var, thing)
 stopprogramrun()
+getrawvarname(string var, var)
 
 
 program variables (these are not variables you can set yourself but they will refer to variables the program itself gives you access to)

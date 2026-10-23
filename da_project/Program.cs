@@ -904,6 +904,9 @@ namespace fazfuck
                                 counter = lines.Length;
                                 dorun = false;
                                 break;
+                            case "getrawvarname": //string var, var
+                                setvar_string(line[1], line[2]);
+                                break;
                         }
                     }
                     counter++;
