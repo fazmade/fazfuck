@@ -1,0 +1,84 @@
+&checkstop
+{
+	if(!console_keyavailable)
+	{
+		return()
+	}
+	console_waitreadkey(key)
+	compare_string(,key,=,"Escape")
+	if()
+	{
+		stopprogramrun()
+	}
+	return()
+}
+/get amount of iterations
+print("amount of iterations pls")
+console_waitreadline(input)
+parse_num(loops,input)
+remove_stringvar(input)/won't be used anymore so we can remove it
+
+/setup initial variables
+set_numvar(counter,1)
+set_numvar(listlength,0)
+set_boolvar(doloop,true)
+
+/define subroutines
+&getindexvar()
+{
+	set_stringvar(varname,"primelist")
+	num_to_string(jumbojosh, meindex)
+	string_join(varname,jumbojosh)
+	return()
+}
+&addcountertolist()
+{
+	math(listlength,+,1)/increase list size
+	set_numvar(meindex, listlength)
+	subroutine(&getindexvar)
+	set_dynamic_num(varname, counter)/set it to the counter
+	return()
+}
+&checkprime()
+{
+	set_numvar(i,1)
+	compare_num(doloop,i,>,listlength)
+	while(doloop)
+	{
+		subroutine(&checkstop)
+		set_numvar(meindex, i)
+		subroutine(&getindexvar)
+		parse_num(numatindex,varname)/get the number at our index
+		set_numvar(remainder, counter)
+		math(remainder,%,numatindex)/calc (short for calculator)
+		compare_num(,remainder,=,0)/if 0 it is a multiple
+		if()
+		{
+			set_boolvar(isprime,false)
+			return_multi(2)/returns from both the loop and subroutine
+		}
+		/increase and loop
+		math(i,+,1)
+		return()
+	}
+			set_boolvar(isprime,true)
+			return()
+}
+
+print("let's-a go!")
+print("2")
+while(doloop)
+{
+	math(counter,+,2)/skip the even numbers
+	subroutine(&checkprime)
+	if(isprime)
+	{
+		subroutine(&addcountertolist)
+		num_to_string(jumbojosh, counter)
+		print(jumbojosh)
+	}
+	math(loops,-,1)
+	compare_num(,loops,!=,0)
+	return()
+}
+stopprogramrun()

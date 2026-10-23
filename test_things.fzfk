@@ -1,0 +1,26 @@
+funnyimg_getstring(straing,funnyimg_garfield)
+print(straing)
+print("available: 0=garfield, 1=corn flake, 2=farter's day, 3=fri, 4=mcflurreh")
+
+console_waitreadline(straing)
+parse_num(id, straing)
+funnyimg_get(image1,id)
+funnyimg_getstring(straing,image1)
+print(straing)
+
+console_waitreadline(straing)
+parse_num(id, straing)
+funnyimg_get(image2,id)
+funnyimg_getstring(straing,image2)
+print(straing)
+
+compare_thingref(,image1,=,image2)
+if()
+{
+	print("SAME")
+	break(2)
+}
+else{
+	print("NOT SAME")
+}
+stopprogramrun()

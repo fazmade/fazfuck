@@ -1,0 +1,148 @@
+press escape to stop program run if not ended via an end() outside a hook
+
+syntax is: function(parameter,parameter)/comment
+"text" for string, \ to escape a character
+numbers are floats but are converted to ints if needed
+
+you put things between { } they're now single ones bc i figured out a better way
+the actual whitespace before a line doesn't matter
+if you put else{ NOTHING HAPPENS it's just so you can make your code look more normal like this:
+if()
+{
+	stuffhere
+	break(2)
+}
+else{
+	stuffhere
+}
+
+hooks, subroutines and labels are pointer. you give them a name and they point to a line. they all start with a symbol and get added when the counter going over them.
+hooks (#) and subroutines (&) are functions after the and skip what's inside their { }
+hooks have paramaters in parenthesis, subroutines don't
+hooks should end using end() to stop the run, and subroutines with return() to return to the original place
+you can put multiple functions before their insides (line with { ) and they will all be defined to run the same line
+labels (%) just add their location as a pointer and that's it
+
+[type] = a constant value or variable reference
+[type] ref = a variable reference, this should always mean that the variable will get modified by the function
+[type] var = a direct reference to a variable, modifies the variable without reading it (and can thus create a new variable without an error)
+for bools you can add ! infront of the value to invert it (won't change the value of the variable)
+you have have a variable named NOTHING!! LOL
+if a variable reference is only used to set a variable and it doesn't do anything with the initial value you can use the discard _ to discard it have it not save to any variable
+
+
+-variable handling
+set_boolvar(bool var, bool)
+set_numvar(num var, num)
+set_stringvar(string var, string)
+set_thingvar(thing var, thing)
+remove_boolvar(bool var)
+remove_numvar(num var)
+remove_stringvar(string var)
+remove_thingvar(thing var)
+>useful to not waste space if a variable isn't needed anymre
+
+-variable operations
+math(num ref, operator, num)
+>operators: +, -, *, /, % (mod), ^ (power)
+math_abs(num ref)
+math_round(num ref, num)
+math_random(num ref, num, num)
+>random decimal number from min to max
+math_random_round(num ref, num, num)
+>random integer from min to max INCLUSIVE
+math_sin(num ref)
+math_cos(num ref)
+math_tan(num ref)
+math_log(num ref, num)
+math_sqrt(num ref)
+math_sign(num ref)
+math_min(num var, num, num)
+math_max(num var, num, num)
+>stores into the first variable
+logic(bool ref, operator, bool)
+>operators: &, |, ^ (xor)
+compare_num(bool var, num, operator, num)
+>operators: =, !=, >, <, =>, <=
+compare_string(bool var, string, operator, string)
+>operators: =, !=, contains, !contains, startswith, !startswith, endswith, !endswith
+compare_thing(bool var, thing, operator, thing)
+>operators: =, !=
+
+-some text stuff
+print(string)
+printn(num)
+num_to_string(string var, num)
+string_replace(string ref, string, string)
+string_join(string ref, string)
+string_sub(string var, string, num, num)
+string_length(int ref, string)
+string_lower(string ref)
+string_split_count(num var, string, string)
+string_split_index(string var, string, string, num)
+
+-program control
+if(bool)
+goto_line(num)
+skip(num)
+>skips an amount of lines
+break(num)
+>skips indentation
+end()
+subroutine(pointer)
+>goes to a subroutine
+return()
+return_multi(num)
+>returns an amount of times
+while(bool)
+>use return() at the end to loop
+goto_pointer(pointer)
+
+-variable and internal and dynamic stuff
+parse_bool(bool var, string)
+parse_num(num var, string)
+parse_string(string var, string)
+parse_thing(thing var, string)
+>the parse functions use the same parsing function as used internally so if you parse a string that has the name of a variable it will return that
+set_dynamic_bool(string, bool)
+set_dynamic_num(string, num)
+set_dynamic_string(string, string)
+set_dynamic_thing(string, thing)
+>uses the given string as the variable name
+code_getline(string var, num)
+code_setline(string, num)
+subroutine_dynamic(string)
+>it takes a STRING instead of a constant pointer... holy SHITE!
+pointer_remove(string)
+pointer_getline(num var, string)
+pointer_define(string, num)
+>these use strings instead of constant pointers because if you're gonna use these you probably already want them to be dynamic
+
+-program specific functions
+console_waitreadline(string var)
+console_write(string)
+>print but no new line
+console_waitreadkey(string var)
+>doesn't work inside the #console_keypressed hook
+debug_dumpdata()
+funnyimg_get(thing var, num)
+funnyimg_getstring(string var, thing)
+stopprogramrun()
+
+
+program variables (these are not variables you can set yourself but they will refer to variables the program itself gives you access to)
+boolean: ISINHOOK console_capslock, console_keyavailable
+number: COUNTER PROGRAMVERSION IMPLEMENTATIONVERSION
+string: PROGRAMNAME console_windowtitle
+thing: INVALID funnyimg_garfield
+
+hooks:
+#console_keypressed(num var)
+>activated when you press a console key (enum ConsoleKey for key numbers)
+
+commands
+verbosity for debugging: v_not, v_seperateline, v_runline, v_variables, v_thing
+dump
+rerun
+clear
+currentprogram

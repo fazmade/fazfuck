@@ -1,0 +1,31 @@
+/get all the freaking numbers
+print("first number")
+console_waitreadline(input)
+parse_num(num1,input)
+print("second number")
+console_waitreadline(input)
+parse_num(num2,input)
+print("addition")
+console_waitreadline(input)
+parse_num(add,input)
+
+/the subroutine! wooooo!
+&addnum
+{
+	math(functionvalue,+,add)
+	return()
+}
+
+print("calculating...")
+set_numvar(functionvalue, num1)/set the variable the subroutine uses to the number
+subroutine(&addnum)/call the subroutine
+set_numvar(num1, functionvalue)/do the reverse
+set_numvar(functionvalue, num2)
+subroutine(&addnum)
+set_numvar(num2, functionvalue)
+
+print("printing!")
+printn(num1)
+printn(num2)
+
+stopprogramrun()

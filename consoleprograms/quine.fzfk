@@ -1,0 +1,10 @@
+set_numvar(progress,0)
+code_getline(codeline, progress)
+print(codeline)
+math(progress,+,1)
+compare_string(,codeline,!=,"stopprogramrun()")/check if we just printed out last line
+if()
+{
+	goto(1)
+}
+stopprogramrun()

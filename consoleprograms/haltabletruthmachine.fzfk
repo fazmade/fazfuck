@@ -1,0 +1,32 @@
+&checkstop
+{
+	if(!console_keyavailable)
+	{
+		return()
+	}
+	console_waitreadkey(key)
+	compare_string(,key,=,"Escape")
+	if()
+	{
+		stopprogramrun()
+	}
+	return()
+}
+/this is mainly for this checkstop subroutine that you can copy
+%retry
+console_waitreadline(input)
+compare_string(,input,=,"0")
+if()
+{
+	print("0")
+	stopprogramrun()
+}
+compare_string(,input,=,"1")
+if()
+{
+	console_write("1")
+	subroutine(&checkstop)
+	skip(-3)
+}
+print("what the FUCK! do it AGAIN!! NOW!!!")
+goto_pointer(%retry)

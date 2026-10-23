@@ -1,0 +1,31 @@
+print("ASS!1")
+print("ASS!2")
+print("ASS!3")
+print("ASS!4")
+
+set_stringvar(textstring,"ooga booga! /srs")
+print(textstring)
+
+set_numvar(number1,4)
+set_numvar(number2,6)
+math(number1,*,number2)
+compare_num(,number1,=,24)
+if()
+{
+	print("it compare!")
+	break(2)
+}
+else{
+	print("FUCK")
+}
+
+print("say something to test input!")
+console_waitreadline(textstring)
+compare_string(,textstring,=,"no")
+if()
+{
+	print("okay then...")
+	stopprogramrun()
+}
+print(textstring)
+stopprogramrun()

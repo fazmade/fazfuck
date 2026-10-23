@@ -1,0 +1,14 @@
+console_waitreadline(input)
+string_length(length,input)
+set_stringvar(reverse,"")
+set_boolvar(doloop,true)
+while(doloop)
+{
+	math(length,-,1)
+	string_sub(letter,input,length,1)
+	string_join(reverse, letter)
+	compare_num(doloop,length,!=,0)
+	return()
+}
+print(reverse)
+stopprogramrun()

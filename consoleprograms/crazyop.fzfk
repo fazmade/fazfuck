@@ -1,0 +1,28 @@
+/get amount of iterations
+print("amount of iterations pls")
+console_waitreadline(input)
+parse_num(loops,input)
+print("second operator")
+console_waitreadline(input)
+parse_num(two,input)
+remove_stringvar(input)/won't be used anymore so we can remove it
+
+/setup initial variables
+set_numvar(counter,-1)
+set_boolvar(doloop,true)
+
+print("let's-a go!")
+/do the loopy
+while(doloop)
+{
+	math(counter,+,1)
+	set_numvar(iwascrazyonce,counter)
+	math(iwascrazyonce,@,two)
+	num_to_string(printer,iwascrazyonce)
+	print(printer)
+
+	math(loops,-,1)
+	compare_number(,loops,!=,0)
+	return()
+}
+stopprogramrun()

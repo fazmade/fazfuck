@@ -1,0 +1,12 @@
+print("give me a number and i'll count down!")
+console_waitreadline(input)
+parse_num(num, input)
+set_boolvar(iszero,false)
+while(!iszero)
+{
+	math(num,-,1)
+	printn(num)
+	compare_num(iszero,num,=,0)
+	return()
+}
+stopprogramrun()

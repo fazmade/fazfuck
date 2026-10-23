@@ -1,0 +1,85 @@
+&readshit
+{
+	%startreading
+	print("______________________________________________")
+	print("read shits")
+	print("1: FUCK go back")
+	print("2: oven")
+	print("3: spongebob")
+	console_waitreadkey(input)
+	compare_string(,input,=,"D1")
+	if()
+	{
+		return()
+	}
+	compare_string(,input,=,"D2")
+	if()
+	{
+		print("______________________________________________")
+		print("why do they call it oven when you of in the cold food of out hot eat the food?")
+		console_waitreadkey(_)
+		goto_pointer(%startreading)
+	}
+	compare_string(,input,=,"D3")
+	if()
+	{
+		print("______________________________________________")
+		print("im spongebob suarepants lvie in pineapple sea under the water me sponge water")
+		console_waitreadkey(_)
+		goto_pointer(%startreading)
+	}
+	goto_pointer(%startreading)
+}
+%menu
+print("______________________________________________")
+print("pooooop edutainment centre")
+print("1: NO")
+print("2: read shit")
+print("3: get maths")
+print("4: gamble!")
+console_waitreadkey(input)
+compare_string(,input,=,"D1")
+if()
+{
+	stopprogramrun()
+}
+compare_string(,input,=,"D2")
+if()
+{
+	subroutine(&readshit)
+	goto_pointer(%menu)
+}
+compare_string(,input,=,"D3")
+if()
+{
+	print("______________________________________________")
+	print("numbah 1")
+	console_waitreadline(input)
+	parse_num(num1,input)
+	print("numbah 2")
+	console_waitreadline(input)
+	parse_num(num2,input)
+	math(num1,+,num2)
+	printn(num1)
+	console_waitreadkey(_)
+	goto_pointer(%menu)
+}
+compare_string(,input,=,"D4")
+if()
+{
+	print("______________________________________________")
+	math_random_round(num1,0,10)
+	printn(num1)
+	compare_num(,num1,=,10)
+	if()
+	{
+		print("i can't stop winning!")
+		break(2)
+	}
+	else{
+		print("aw dangit!")
+	}
+	console_waitreadkey(_)
+	goto_pointer(%menu)
+}
+goto_pointer(%menu)

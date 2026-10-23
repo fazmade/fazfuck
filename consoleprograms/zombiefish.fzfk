@@ -1,0 +1,149 @@
+&checkstop
+{
+	if(!console_keyavailable)
+	{
+		return()
+	}
+	console_waitreadkey(key)
+	compare_string(,key,=,"Escape")
+	if()
+	{
+		stopprogramrun()
+	}
+	return()
+}
+set_stringvar(asschi," EQWRTYUIOPASDFGHJKLZXCVBNM")
+&checknumflow
+{
+	compare_num(,accumulator,=,-1)
+	if()
+	{
+		set_numvar(accumulator,0)
+		return()
+	}
+	compare_num(,accumulator,=,256)
+	if()
+	{
+		set_numvar(accumulator,0)
+		return()
+	}
+	return()
+}
+console_waitreadline(input)
+string_length(length,input)
+set_numvar(i,0)
+set_numvar(accumulator,0)
+while(true)
+{
+	subroutine(&checkstop)
+	string_sub(letter,input,i,1)
+	{
+		compare_string(,letter,=,"i")/increment
+		if()
+		{
+			math(accumulator,+,1)
+			subroutine(&checknumflow)
+			break(2)
+		}
+		compare_string(,letter,=,"d")/decrememnt
+		if()
+		{
+			math(accumulator,-,1)
+			subroutine(&checknumflow)
+			break(2)
+		}
+		compare_string(,letter,=,"s")/square
+		if()
+		{
+			math(accumulator,^,2)
+			subroutine(&checknumflow)
+			break(2)
+		}
+		compare_string(,letter,=,"o")/print number
+		if()
+		{
+			num_to_string(printer,accumulator)
+			console_write(printer)
+			break(2)
+		}
+		compare_string(,letter,=,"h")/halt
+		if()
+		{
+			stopprogramrun()
+		}
+		compare_string(,letter,=,"l")/print character
+		if()
+		{
+			compare_num(,accumulator,<,0)
+			if()
+			{
+				set_numvar(w,accumulator)
+				math_abs(w)
+				string_sub(letter,asschi,w,1)
+				string_lower(letter)
+				skip(2)
+			}
+			string_sub(letter,asschi,accumulator,1)
+			console_write(letter)
+			break(2)
+		}
+		compare_string(,letter,=,"n")/negate
+		if()
+		{
+			math(accumulator,x,-1)
+			subroutine(&checknumflow)
+			break(2)
+		}
+		compare_string(,letter,=,"I")/input
+		if()
+		{
+			console_waitreadkey(key)
+			compare_string(,key,=,"Spacebar")
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			compare_string(,key,=,"Escape")
+			if()
+			{
+				stopprogramrun()
+			}
+			set_numvar(i2,1)
+			set_boolvar(doloop,true)
+			while(doloop)
+			{
+				string_sub(letter,asschi,i2,1)
+				compare_string(,letter,==,key)
+				if()
+				{
+					set_numvar(accumulator,i2)
+					set_boolvar(doloop,false)
+					return()
+				}
+				math(i2,+,1)
+				compare_num(doloop,i2,!=,27)
+				return()
+			}
+			break(2)
+		}
+		compare_string(,letter,=,"c")/i don't know what the c stands for
+		if()
+		{
+			compare_num(,accumulator,<=,0)/less than or equal to 0
+			if()
+			{
+				math(i,+,24)/skip 25 lines bc i like the number
+				math(i,%,length)
+			}
+			break(2)
+		}
+	}
+	math(i,+,1)
+	compare_num(,i,==,length)
+	if()
+	{
+		set_numvar(i,0)
+	}
+	return()
+}

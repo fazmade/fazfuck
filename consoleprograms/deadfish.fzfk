@@ -1,0 +1,80 @@
+console_waitreadline(input)
+string_length(length,input)
+set_numvar(i,0)
+set_numvar(accumulator,0)
+set_boolvar(doloop,true)
+while(doloop)
+{
+	string_sub(letter,input,i,1)
+	{
+		compare_string(,letter,=,"i")
+		if()
+		{
+			math(accumulator,+,1)
+			compare_num(,accumulator,=,-1)
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			compare_num(,accumulator,=,256)
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			break(2)
+		}
+		compare_string(,letter,=,"d")
+		if()
+		{
+			math(accumulator,-,1)
+			compare_num(,accumulator,=,-1)
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			compare_num(,accumulator,=,256)
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			break(2)
+		}
+		compare_string(,letter,=,"s")
+		if()
+		{
+			math(accumulator,^,2)
+			compare_num(,accumulator,=,-1)
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			compare_num(,accumulator,=,256)
+			if()
+			{
+				set_numvar(accumulator,0)
+				break(3)
+			}
+			break(2)
+		}
+		compare_string(,letter,=,"o")
+		if()
+		{
+			printn(accumulator)
+			break(2)
+		}
+		compare_string(,letter,=,"h")
+		if()
+		{
+			stopprogramrun()
+		}
+	}
+	math(i,+,1)
+	compare_num(doloop,i,!=,length)
+	return()
+}
+stopprogramrun()

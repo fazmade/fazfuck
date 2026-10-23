@@ -1,0 +1,77 @@
+&checkstop
+{
+	if(!console_keyavailable)
+	{
+		return()
+	}
+	console_waitreadkey(key)
+	compare_string(,key,=,"Escape")
+	if()
+	{
+		stopprogramrun()
+	}
+	return()
+}
+
+/get amount of iterations
+print("amount of iterations pls")
+console_waitreadline(input)
+parse_num(loops,input)
+remove_stringvar(input)/won't be used anymore so we can remove it
+
+/setup initial variables
+set_numvar(counter,0)
+set_boolvar(doloop,true)
+
+print("let's-a go!")
+/do the loopy
+while(doloop)
+{
+	subroutine(&checkstop)
+	math(counter,+,1)
+	set_numvar(printtype,0)/0 (00) = number, 1 (01) = fizz, 2 (10) = buzz, 3 (11) = fizzbuzz
+
+	set_numvar(temp,counter)
+	math(temp,%,3)
+	compare_num(,temp,=,0)
+	if()
+	{
+		math(printtype,+,1)
+	}
+
+	set_numvar(temp,counter)
+	math(temp,%,5)
+	compare_num(,temp,=,0)
+	if()
+	{
+		math(printtype,+,2)
+	}
+
+	{
+		compare_num(,printtype,=,0)
+		if()
+		{
+			num_to_string(printer, counter)
+			printn(counter)
+			break(2)
+		}
+		compare_num(,printtype,=,1)
+		if()
+		{
+			print("FUCK")
+			break(2)
+		}
+		compare_num(,printtype,=,2)
+		if()
+		{
+			print("BITCH")
+			break(2)
+		}
+		print("FUCKBITCH")
+	}
+
+	math(loops,-,1)
+	compare_num(doloop,loops,!=,0)
+	return()
+}
+stopprogramrun()
