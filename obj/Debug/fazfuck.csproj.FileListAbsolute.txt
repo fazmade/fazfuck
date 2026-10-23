@@ -1,0 +1,8 @@
+C:\Users\Eize\source\repos\fazfuck\bin\Debug\fazfuck.exe.config
+C:\Users\Eize\source\repos\fazfuck\bin\Debug\fazfuck.exe
+C:\Users\Eize\source\repos\fazfuck\bin\Debug\fazfuck.pdb
+C:\Users\Eize\source\repos\fazfuck\obj\Debug\fazfuck.csproj.AssemblyReference.cache
+C:\Users\Eize\source\repos\fazfuck\obj\Debug\fazfuck.csproj.CoreCompileInputs.cache
+C:\Users\Eize\source\repos\fazfuck\obj\Debug\fazfuck.exe
+C:\Users\Eize\source\repos\fazfuck\obj\Debug\fazfuck.pdb
+C:\Users\Eize\source\repos\fazfuck\obj\Debug\fazfuck.exe.config
