@@ -742,7 +742,8 @@ namespace fazfuck
                                     linereturn.Add(counter);
                                     if (verbose == verbosity.runline)
                                         debugline("added " + counter + " to return stack");
-                                    counter = pointers[line[1]] - 1;
+                                    counter = pointers[line[1]];
+                                    skipindentation(1); //searches for first {
                                     if (verbose == verbosity.runline)
                                         debugline("went to " + (counter+1));
                                 }
